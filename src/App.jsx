@@ -1,13 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Connexion from './connexionApi/ConnexionApi'
-
+import PageDetail from './Page/PageDetail'
 function App() {
     return(
-        <Connexion/>
-
+        <PageDetail id={"4"}/>
     )
 }
 
