@@ -13,9 +13,6 @@ import "leaflet/dist/leaflet.css";
 
 function CreateMap({coordinates}) {
 
-
-    
-    console.log(coordinates);
     return (
         <>
             <MapContainer className={styles.mapContainer} center={[46.6031, 1.8883]} zoom={5} minZoom={4}>

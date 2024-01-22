@@ -1,10 +1,10 @@
 import './App.css'
-import PageDetail from './Page/PageDetail'
+import Accueil from './Page/Accueil/Accueil.jsx';
+
 function App() {
     return(
-    <div className='pageDetail'>
-        <PageDetail id={"4"}/>
-
+    <div>
+            <Accueil/>
     </div>
     )
 }

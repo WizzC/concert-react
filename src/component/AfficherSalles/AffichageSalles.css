@@ -1,0 +1,194 @@
+section{
+    margin: 5%;
+}
+/* version mobile */
+@media screen and (max-width:500px){
+    /* affichage barre de recherche */
+    .barreRecherche{
+        border-radius: 25px;
+        width: 85%;
+        height: 40px;
+        padding-left: 3%;
+    }
+    .hautPage{
+        display: flex;
+    }
+
+    /* Affichages des salles */
+    main{
+        flex-direction: column;
+    }
+    div .salles{
+        background-color: #D56062;
+        border-radius: 20px ; 
+        padding: 5%;
+        margin:5% 0%;
+    }
+    p{
+        margin-left: 5%;
+    
+    }
+    #nom{
+        font-weight:bold;
+        font-size: 1em;
+    }
+    div .divCapacite{
+        margin-left: 5%;
+        padding-top: 1vh;
+        display: flex;
+    }
+    .carreNoir{
+        background-color: black;
+        align-self: center;
+        width: 10px;
+        height: 10px;
+    }
+    
+    .capacite{
+        font-weight: 700;
+    } 
+ 
+}
+
+
+/*version tablette */
+@media screen and (min-width:500px){
+    /* affichage barre de recherche */
+    .barreRecherche{
+        border-radius: 25px;
+        width: 50%;
+        height: 40px;
+        padding-left: 3%;
+    }
+    .hautPage{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2%;
+    }
+    /* .filtreMenuDeroulant{
+        visibility:visible;
+        background-color: #FADF7F;
+        width: 10vw;
+        display: absolute;
+    } */
+
+    /* Affichages des salles */
+    main{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    div .salles{
+        width:30vw;
+        height: 25vh;
+        background-color: #D56062;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0.5% 0.5%;
+        border-radius: 5%;
+    }
+
+    p{
+        text-align: center;
+
+    }
+
+    #nom{
+        font-weight:bold;
+        font-size: 1em;
+    }
+
+    div .divCapacite{
+
+        justify-content: center;
+        padding-top: 1vh;
+        display: flex;
+    }
+
+    .carreNoir{
+        background-color: black;
+        align-self: center;
+        width: 10px;
+        height: 10px;
+        margin-right: 5%;
+    }
+
+    .capacite{
+        font-weight: 700;
+    }
+
+}
+
+
+/*version pc */
+@media screen and (min-width:1000px){
+    /* affichage barre de recherche */
+    .barreRecherche{
+        border-radius: 25px;
+        width: 50%;
+        height: 40px;
+        padding-left: 3%;
+    }
+    .hautPage{
+        display: flex;
+        justify-content: start;
+        margin: 0% 0% 2% 2%;
+    }
+
+    .filtre{
+        display:none;
+    }
+
+    /* Affichages des salles */
+    main{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+    }
+
+    div .salles{
+        width:15vw;
+        height: 25vh;
+        background-color: #D56062;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0.5%;
+        border-radius: 5%;
+    }
+
+    p{
+        text-align: center;
+
+    }
+
+    #nom{
+        font-weight:bold;
+        font-size: 1.2em;
+    }
+
+    div .divCapacite{
+
+        justify-content: center;
+        padding-top: 1vh;
+        display: flex;
+    }
+
+    .carreNoir{
+        background-color: black;
+        align-self: center;
+        width: 10px;
+        height: 10px;
+        margin-right: 5%;
+    }
+
+    .capacite{
+        font-weight: 700;
+    }
+
+    .filtreMenuDeroulant{
+        visibility: hidden;
+    }
+}

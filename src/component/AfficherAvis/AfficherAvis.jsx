@@ -4,12 +4,13 @@ import styles from './AfficherAvis.module.css'
 
 function AfficherAvis({salle}){
     const listeAvis = salle.avis;
+    console.log(listeAvis);
     return (listeAvis.map((avis,index) => <Avis avis={avis} key={index}/> ))
     
     
 } 
 function Avis({avis}){
-    // console.log(avis);
+
     let date = new Date(avis.date);
     return (
         <div className={styles.avisContaine}>
