@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AffichageFiltre from '../../component/Filtre/Filtre';
 import AffichageSalles from '../../component/AfficherSalles/AffichageSalles';
-import './Accueil.css'
+import Style from'./Accueil.module.css'
 
 function Accueil() {
     const [salles, setSalles] = useState([]);
@@ -10,7 +10,7 @@ function Accueil() {
     const url = 'https://localhost:44314/api/';
 
     useEffect(() => {
-        fetch(`${url}salles`)
+        fetch(`${url}Salles`)
         .then(res => res.json())
         .then(salle => {
              setSalles(salle)
@@ -19,7 +19,7 @@ function Accueil() {
 
 
     useEffect(() => {
-        fetch(`${url}styles`)
+        fetch(`${url}Styles`)
         .then(res => res.json())
         .then(style => {
             setStyles(style)
@@ -27,7 +27,7 @@ function Accueil() {
     }, [])
   
     return (
-    <div className='page'>
+    <div className= {Style.page} >
         {styles !== null &&  <AffichageFiltre styles={styles}/>}
         {salles.length > 0 && <AffichageSalles salles={salles}/>}
     </div>

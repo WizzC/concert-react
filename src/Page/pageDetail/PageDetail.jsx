@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-
 import CreateMap from '../../component/CreateMap/CreateMap';
-
 import InformationSalle from '../../component/InformationSalle/InformationSalle';
 import AfficherAvis from '../../component/AfficherAvis/AfficherAvis';
 import DemanderAvis from '../../component/DemanderAvis/DemanderAvis';
+import { useParams } from 'react-router-dom';
+import Style from './PageDetail.module.css'
+function PageDetail() {
 
-import './PageDetail.css'
-function PageDetail({id}) {
+    const { id } = useParams();
 
     const urlGetById = 'https://localhost:44314/api/Salles/'+id;
 
@@ -18,13 +18,14 @@ function PageDetail({id}) {
         fetch(urlGetById)
             .then(res => res.json())
             .then(salle => {
+                console.log(salle)
                 setSalles(salle)
                 setCoordinates(salle.adresse.localisation.coordinates)
             })
     }, [])
     return (
 
-        <div className='pageDetail'>
+        <div className={Style.pageDetail}>
             {coordinates.length > 0 && <CreateMap coordinates={coordinates} />}
             {Object.keys(salles).length > 0 && <InformationSalle salle={salles} />}
             {Object.keys(salles).length > 0 && <DemanderAvis salle={salles} />}

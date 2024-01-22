@@ -2,18 +2,26 @@
 
 import { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
-import './DemangerAvis.css'
+import Style from './DemangerAvis.module.css'
 const Stars = ({salle}) => {
   const [rating, setRating] = useState(100) // initial rating value
     let newSalle = salle;
   // Catch Rating value
   const handleRating = (rate) => {
     setRating(rate)
-    console.log(rate)
- newSalle.avis.push ({          
+    if(newSalle.avis != null){
+    newSalle.avis.push ({          
     "date": new Date(),
     "note": rate*2
-  } )
+  } )}
+  else{
+    newSalle.avis = [{          
+      "date": new Date(),
+      "note": rate*2
+    
+    }]
+  }
+  console.log(newSalle)
   }
 const envoyerDonner = ()=>{
 
@@ -31,7 +39,7 @@ const envoyerDonner = ()=>{
     }
   return (
   
-    <div className='notation'>
+    <div className={Style.notation}>
     <>
     
       <Rating
@@ -48,7 +56,7 @@ const envoyerDonner = ()=>{
 
 const DemanderAvis = ({salle}) => {
   return (
-    <div className="DemanderAvis">
+    <div className={Style.DemanderAvis}>
       <Stars salle={salle}/>
     </div>
   )

@@ -18,3 +18,15 @@
 .labelStyle{
     font-size: 1.3em;
 }
+.barreFiltre{
+    display: none;
+  }
+
+  @media screen and (min-width:1000px){
+
+    .barreFiltre{
+      display: block;
+      position: sticky;
+      height: 100vh;
+    }
+  } 

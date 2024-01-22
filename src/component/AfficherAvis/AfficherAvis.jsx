@@ -1,11 +1,12 @@
 import React from "react";
 import { Rating } from 'react-simple-star-rating'
-import styles from './AfficherAvis.module.css'
+import Styles from './AfficherAvis.module.css'
 
 function AfficherAvis({salle}){
     const listeAvis = salle.avis;
-    console.log(listeAvis);
-    return (listeAvis.map((avis,index) => <Avis avis={avis} key={index}/> ))
+    return (
+      listeAvis!= null && listeAvis.map((avis,index) => <Avis avis={avis} key={index}/> 
+      ))
     
     
 } 
@@ -13,8 +14,8 @@ function Avis({avis}){
 
     let date = new Date(avis.date);
     return (
-        <div className={styles.avisContaine}>
-            <p className={styles.dateAvis}>{(date).toLocaleDateString("fr")}</p>
+        <div className={Styles.avisContaine}>
+            <p className={Styles.dateAvis}>{(date).toLocaleDateString("fr")}</p>
             <Stars note={avis.note}/>
         </div>
     )

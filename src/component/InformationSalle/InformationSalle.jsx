@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './InformationSalle.css';
+import Style from './InformationSalle.module.css';
 function InformationSalle({salle}) {
 
     const adresse = salle.adresse;
@@ -8,7 +8,7 @@ function InformationSalle({salle}) {
     const styles = salle.styles;
 
     return (
-        <div className="info">
+        <div className={Style.info}>
         <p>{adresse.numero + " " + adresse.voie}</p>
         <p>{adresse.codePostal + " " + adresse.ville}</p>
         <p>{styles.map((style) => style + " - "  )}</p>
