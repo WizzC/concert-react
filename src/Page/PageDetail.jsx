@@ -5,6 +5,8 @@ import CreateMap from '../component/CreateMap/CreateMap';
 import InformationSalle from '../component/InformationSalle/InformationSalle';
 import AfficherAvis from '../component/AfficherAvis/AfficherAvis';
 import DemanderAvis from '../component/DemanderAvis/DemanderAvis';
+
+import './PageDetail.css'
 function PageDetail({id}) {
 
     const urlGetById = 'https://localhost:44314/api/Salles/'+id;
@@ -22,12 +24,12 @@ function PageDetail({id}) {
     }, [])
     return (
 
-        <>
+        <div className='pageDetail'>
             {coordinates.length > 0 && <CreateMap coordinates={coordinates} />}
             {Object.keys(salles).length > 0 && <InformationSalle salle={salles} />}
             {Object.keys(salles).length > 0 && <DemanderAvis salle={salles} />}
             {Object.keys(salles).length > 0 && <AfficherAvis salle={salles} />}
-        </>
+        </div>
     )
 
 }

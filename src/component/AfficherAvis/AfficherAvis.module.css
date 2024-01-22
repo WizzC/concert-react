@@ -3,6 +3,7 @@
     padding: 2vh;
     margin: 1vh;
 }
-p{
+.dateAvis{
+    color: #000;
     font-size: 22px;
 }

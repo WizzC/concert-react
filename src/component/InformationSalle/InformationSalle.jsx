@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-
+import './InformationSalle.css';
 function InformationSalle({salle}) {
 
     const adresse = salle.adresse;
 
-    console.log(adresse);
+    
     const styles = salle.styles;
-    console.log(styles);
-console.log(salle.smac);
+
     return (
-        <div>
+        <div className="info">
         <p>{adresse.numero + " " + adresse.voie}</p>
         <p>{adresse.codePostal + " " + adresse.ville}</p>
         <p>{styles.map((style) => style + " - "  )}</p>

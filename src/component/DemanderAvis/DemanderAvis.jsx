@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
-
+import './DemangerAvis.css'
 const Stars = ({salle}) => {
   const [rating, setRating] = useState(100) // initial rating value
     let newSalle = salle;
@@ -27,10 +27,11 @@ const envoyerDonner = ()=>{
           };
             fetch('https://localhost:44314/api/Salles/'+newSalle.id, options)
           .catch(error => console.error('Erreur :', error));
+          window.location.reload(true);
     }
   return (
   
-    <div>
+    <div className='notation'>
     <>
     
       <Rating
