@@ -3,6 +3,7 @@ import CreateMap from '../../component/CreateMap/CreateMap';
 import InformationSalle from '../../component/InformationSalle/InformationSalle';
 import AfficherAvis from '../../component/AfficherAvis/AfficherAvis';
 import DemanderAvis from '../../component/DemanderAvis/DemanderAvis';
+import AfficherConcerts from '../../component/AfficherConcerts/AfficherConcerts';
 import { useParams } from 'react-router-dom';
 import Style from './PageDetail.module.css'
 import Navbar from '../../component/NavBar/Nav';
@@ -14,26 +15,36 @@ function PageDetail() {
 
     const urlGetById = 'https://localhost:44314/api/Salles/'+id;
 
-    const [salles, setSalles] = useState({});
+    const [salle, setSalle] = useState({});
     const [coordinates, setCoordinates] = useState([]);
 
     useEffect(() => {
         fetch(urlGetById)
             .then(res => res.json())
             .then(salle => {
-                console.log(salle)
-                setSalles(salle)
+                setSalle(salle)
                 setCoordinates(salle.adresse.localisation.coordinates)
             })
     }, [])
     return (   
+        <>
+            <Navbar className={Style.navbar} page={"detail"} salle={salle} />
+
         <div className={Style.pageDetail}>
-            <Navbar page={"detail"} salle={salles} />
+            <div className={Style.listeConcert}>
+            {Object.keys(salle).length > 0 && <AfficherConcerts salle={salle} />}
+            </div>
+            <div className={Style.avis}>
+            {Object.keys(salle).length > 0 && <DemanderAvis salle={salle} setSalle={setSalle} />}
+            {Object.keys(salle).length > 0 && <AfficherAvis salle={salle}/>}
+            </div>
+            <div className={Style.carteInfo}>
             {coordinates.length > 0 && <CreateMap coordinates={coordinates} />}
-            {Object.keys(salles).length > 0 && <InformationSalle salle={salles} />}
-            {Object.keys(salles).length > 0 && <DemanderAvis salle={salles} />}
-            {Object.keys(salles).length > 0 && <AfficherAvis salle={salles} />}
+            {Object.keys(salle).length > 0 && <InformationSalle salle={salle} className={Style.infoSalle}/>}
+            </div>
         </div>
+        </>
+
     )
 
 }

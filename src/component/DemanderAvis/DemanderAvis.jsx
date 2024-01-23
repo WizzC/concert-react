@@ -1,63 +1,69 @@
-
-
 import { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 import Style from './DemangerAvis.module.css'
-const Stars = ({salle}) => {
+import 'dayjs/locale/fr'
+import dayjs from 'dayjs'
+
+const Stars = ({ salle ,setSalle}) => {
   const [rating, setRating] = useState(100) // initial rating value
-    let newSalle = salle;
+
+  let newSalle = salle;
   // Catch Rating value
   const handleRating = (rate) => {
     setRating(rate)
-    if(newSalle.avis != null){
-    newSalle.avis.push ({          
-    "date": new Date(),
-    "note": rate*2
-  } )}
-  else{
-    newSalle.avis = [{          
-      "date": new Date(),
-      "note": rate*2
-    
-    }]
-  }
-  console.log(newSalle)
-  }
-const envoyerDonner = ()=>{
-
-    
-        const options = {
-            method: 'PUT', 
-            headers: {
-              'Content-Type': 'application/json' 
-            },
-            body: JSON.stringify(newSalle ) 
-          };
-            fetch('https://localhost:44314/api/Salles/'+newSalle.id, options)
-          .catch(error => console.error('Erreur :', error));
-          window.location.reload(true);
+    if (newSalle.avis != null) {
+      newSalle.avis.push({
+        "date": dayjs().format(),
+        "note": rate * 2
+      })
+    } else {
+      newSalle.avis = [{
+        "date": dayjs().format(),
+        "note": rate * 2
+      }]
     }
-  return (
-  
-    <div className={Style.notation}>
-    <>
     
-      <Rating
-        onClick={handleRating}
-        allowFraction
-        transition
-        ratingValue={rating} /* Available Props */
-      />
+   
+  }
+
+  const envoyerDonner = () => {
+    const options = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newSalle)
+    };
+
+    fetch('https://localhost:44314/api/Salles/' + newSalle.id, options)
+    .then(rep => {
+      if(rep.status == 204)
+      {
+        setSalle({...newSalle})
+      }
+    })
+    .catch(error => console.error('Erreur :', error));
+
+  }
+
+  return (
+    <div className={Style.notation}>
+      <>
+        <Rating
+          onClick={handleRating}
+          allowFraction
+          transition
+          ratingValue={rating} />
       </>
       <button onClick={envoyerDonner} >Valider</button>
-      </div>
-    )
+    </div>
+  )
 }
 
-const DemanderAvis = ({salle}) => {
+const DemanderAvis = ({ salle,setSalle }) => {
   return (
     <div className={Style.DemanderAvis}>
-      <Stars salle={salle}/>
+      <Stars salle={salle} setSalle={setSalle} />
     </div>
   )
 }

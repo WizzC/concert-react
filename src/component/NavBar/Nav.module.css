@@ -5,7 +5,9 @@ nav{
     justify-content:space-between ;
     display: flex;
 }
-
+.logo{
+    cursor: pointer;
+}
 
 
 /* version mobile */

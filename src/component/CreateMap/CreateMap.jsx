@@ -24,6 +24,7 @@ function CreateMap({coordinates}) {
                 </Marker>
             </MapContainer>
         </>
+        
     );
 }
 
