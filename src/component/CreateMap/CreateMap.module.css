@@ -4,3 +4,11 @@
     margin: 10px auto;
     
 }
+@media screen and (min-width:1000px) {
+    .mapContainer {
+        height: 20vw;
+        width: 20vw;
+        margin: 10px auto;
+        grid-column: 3;
+    }
+}

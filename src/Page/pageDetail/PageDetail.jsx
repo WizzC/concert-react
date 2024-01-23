@@ -26,11 +26,17 @@ function PageDetail() {
     return (
 
         <div className={Style.pageDetail}>
+            <div className={Style.listeConcert}>
             {Object.keys(salle).length > 0 && <AfficherConcerts salle={salle} />}
-            {coordinates.length > 0 && <CreateMap coordinates={coordinates} />}
-            {Object.keys(salle).length > 0 && <InformationSalle salle={salle} />}
+            </div>
+            <div className={Style.avis}>
             {Object.keys(salle).length > 0 && <DemanderAvis salle={salle} setSalle={setSalle} />}
-            {Object.keys(salle).length > 0 && <AfficherAvis salle={salle} />}
+            {Object.keys(salle).length > 0 && <AfficherAvis salle={salle}/>}
+            </div>
+            <div className={Style.carteInfo}>
+            {coordinates.length > 0 && <CreateMap coordinates={coordinates} />}
+            {Object.keys(salle).length > 0 && <InformationSalle salle={salle} className={Style.infoSalle}/>}
+            </div>
         </div>
     )
 
