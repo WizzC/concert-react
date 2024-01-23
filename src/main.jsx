@@ -5,5 +5,9 @@ import './index.css'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+    <>
+    <link href="https://fonts.googleapis.com/css2?family=Kenia&display=swap" rel="stylesheet"></link>
     <App />
+
+    </>
 )

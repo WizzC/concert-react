@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import AffichageFiltre from '../../component/Filtre/Filtre';
 import AffichageSalles from '../../component/AfficherSalles/AffichageSalles';
-import Style from'./Accueil.module.css'
+import Style from'./Accueil.module.css';
+import Navbar from '../../component/NavBar/Nav';
+
 
 function Accueil() {
     const [salles, setSalles] = useState([]);
@@ -27,10 +29,13 @@ function Accueil() {
     }, [])
   
     return (
-    <div className= {Style.page} >
-        {styles !== null &&  <AffichageFiltre styles={styles}/>}
-        {salles.length > 0 && <AffichageSalles salles={salles}/>}
-    </div>
+    <>
+        <Navbar page={"accueil"} />
+        <div className= {Style.page} >
+            {styles !== null &&  <AffichageFiltre styles={styles}/>}
+            {salles.length > 0 && <AffichageSalles salles={salles}/>}
+        </div>
+    </>
     )
 
 }

@@ -5,6 +5,9 @@ import AfficherAvis from '../../component/AfficherAvis/AfficherAvis';
 import DemanderAvis from '../../component/DemanderAvis/DemanderAvis';
 import { useParams } from 'react-router-dom';
 import Style from './PageDetail.module.css'
+import Navbar from '../../component/NavBar/Nav';
+
+
 function PageDetail() {
 
     const { id } = useParams();
@@ -23,9 +26,9 @@ function PageDetail() {
                 setCoordinates(salle.adresse.localisation.coordinates)
             })
     }, [])
-    return (
-
+    return (   
         <div className={Style.pageDetail}>
+            <Navbar page={"detail"} salle={salles} />
             {coordinates.length > 0 && <CreateMap coordinates={coordinates} />}
             {Object.keys(salles).length > 0 && <InformationSalle salle={salles} />}
             {Object.keys(salles).length > 0 && <DemanderAvis salle={salles} />}
