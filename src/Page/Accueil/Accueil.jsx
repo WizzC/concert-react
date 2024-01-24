@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext, createContext } from 'react';
 import AffichageFiltre from '../../component/Filtre/Filtre';
 import AffichageSalles from '../../component/AfficherSalles/AffichageSalles';
 import Style from'./Accueil.module.css';
 import Navbar from '../../component/NavBar/Nav';
+
+const tabStyleFiltrer = createContext([]);
 
 
 function Accueil() {
@@ -27,14 +29,16 @@ function Accueil() {
             setStyles(style)
         })
     }, [])
-  
     return (
     <>
+
         <Navbar page={"accueil"} />
         <div className= {Style.page} >
             {styles !== null &&  <AffichageFiltre styles={styles}/>}
             {salles.length > 0 && <AffichageSalles salles={salles} styles={styles} />}
         </div>
+
+
     </>
     )
 

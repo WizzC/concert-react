@@ -1,21 +1,20 @@
 import Style from "./Filtre.module.css";
-import React, { useState } from "react";
-import { createStore  } from "state-pool";
+import React from "react";
 
-const tabStyle = createStore();
-tabStyle.setState("tabStyleChoisie",[])
+import pageAccueil from "../../Page/Accueil/Accueil";
+
+
+
+
 function AffichageFiltre({ styles }) {
-  const [tabStyleChoisie, setTabStyleChoisie] = tabStyle.useState("tabStyleChoisie");
 
-  // console.log(tabStyleChoisie);
 
   return (
     <div className={Style.barreFiltre}>
       {styles.styles.map((style, index) => (
         <div key={index} className={Style.group}>
-          <input
+          <input 
             className={Style.inputStyle}
-            onChange={e => setTabStyleChoisie(++style)}
             name={style}
             type="checkbox"
           />
