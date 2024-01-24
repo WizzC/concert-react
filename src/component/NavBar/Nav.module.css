@@ -31,6 +31,10 @@ nav{
     .detailSalle{
         text-align: center;
     }
+    .nav{
+    height:10vh ;
+
+}
 
 }
 
@@ -74,5 +78,8 @@ nav{
         display: none;
     }
 
+.nav{
+    height:15vh ;
 
+}
 }
