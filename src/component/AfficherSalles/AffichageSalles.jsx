@@ -2,10 +2,12 @@ import { React, useState } from "react";
 import Style from "./AffichageSalles.module.css";
 import filtreImg from "../../assets/icons8-filter-30.png";
 import { useNavigate } from "react-router-dom";
+import tabStyle from "../Filtre/Filtre"
 
-// console.log(tabStyle);
 
 function AffichageSalles({ salles, styles }) {
+console.log(tabStyle);
+
   const navigate = useNavigate();
   const [listeSalles, setSalles] = useState(salles);
 
