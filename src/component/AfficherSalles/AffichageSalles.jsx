@@ -3,6 +3,8 @@ import Style from "./AffichageSalles.module.css";
 import filtreImg from "../../assets/icons8-filter-30.png";
 import { useNavigate } from "react-router-dom";
 
+// console.log(tabStyle);
+
 function AffichageSalles({ salles, styles }) {
   const navigate = useNavigate();
   const [listeSalles, setSalles] = useState(salles);
