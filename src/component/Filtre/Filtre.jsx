@@ -1,11 +1,11 @@
 import Style from "./Filtre.module.css";
-import React ,{useState}from "react";
-import {createState } from "state-pool";
+import React, { useState } from "react";
+import { createStore  } from "state-pool";
 
-const tabStyle = createState([])
-
+const tabStyle = createStore();
+tabStyle.setState("tabStyleChoisie",[])
 function AffichageFiltre({ styles }) {
-  const [tabStyleChoisie, setTabStyleChoisie]=useState([tabStyle]);
+  const [tabStyleChoisie, setTabStyleChoisie] = tabStyle.useState("tabStyleChoisie");
 
   // console.log(tabStyleChoisie);
 
@@ -15,9 +15,7 @@ function AffichageFiltre({ styles }) {
         <div key={index} className={Style.group}>
           <input
             className={Style.inputStyle}
-            onChange={() => {
-              setTabStyleChoisie([...tabStyleChoisie,style]);
-            }}
+            onChange={e => setTabStyleChoisie(++style)}
             name={style}
             type="checkbox"
           />
@@ -25,9 +23,12 @@ function AffichageFiltre({ styles }) {
             {style}
           </label>
         </div>
-      ))}
+      ))
+      }
+      
     </div>
   );
+  
 }
 
 export default AffichageFiltre;
