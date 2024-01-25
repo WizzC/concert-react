@@ -3,11 +3,7 @@ import Style from "./AffichageSalles.module.css";
 import filtreImg from "../../assets/icons8-filter-30.png";
 import { useNavigate } from "react-router-dom";
 
-
-
-function AffichageSalles({ salles, styles }) {
-
-
+function AffichageSalles({ salles, styles, stylesFilter }) {
   const navigate = useNavigate();
   const [listeSalles, setSalles] = useState(salles);
 
@@ -33,6 +29,7 @@ function AffichageSalles({ salles, styles }) {
     // Suppression des éléments existants dans la liste
     setSalles(filteredResults);
   }
+
   return (
     <section>
       <div className={Style.hautPage}>
@@ -46,14 +43,11 @@ function AffichageSalles({ salles, styles }) {
         <div className={Style.filtreMenuDeroulant}></div>
       </div>
       <main>
-        {/* {console.log("--------------")}
-        {console.log(listeSalles)} */}
         {listeSalles.map((salle) => (
           <div
             className={Style.salles}
             key={salle.id}
-            onClick={() => handleClick(salle.id)}
-          >
+            onClick={() => handleClick(salle.id)}>
             <p className={Style.nom}>{salle.nom}</p>
             <br />
             <p id="ville">{salle.adresse.ville}</p>

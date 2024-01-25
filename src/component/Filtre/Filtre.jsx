@@ -1,13 +1,12 @@
+import { func } from "prop-types";
 import Style from "./Filtre.module.css";
 import React from "react";
-
+import {createState,useContext } from "state-pool";
 import pageAccueil from "../../Page/Accueil/Accueil";
 
 
 
-
-function AffichageFiltre({ styles }) {
-
+function AffichageFiltre({ styles, tabStyleFiltrer, setTabStyleFilter ,fonctionFiltre}) {
 
   return (
     <div className={Style.barreFiltre}>
@@ -15,6 +14,9 @@ function AffichageFiltre({ styles }) {
         <div key={index} className={Style.group}>
           <input 
             className={Style.inputStyle}
+            onChange={(e) => {
+              remplirTab({ style , tabStyleFiltrer, setTabStyleFilter , e}),fonctionFiltre
+            }}
             name={style}
             type="checkbox"
           />
@@ -31,3 +33,13 @@ function AffichageFiltre({ styles }) {
 }
 
 export default AffichageFiltre;
+
+
+function remplirTab({ style , tabStyleFiltrer, setTabStyleFilter ,e}){
+    if(e.target.checked){
+      setTabStyleFilter([...tabStyleFiltrer,style]);
+    }
+    else{
+      setTabStyleFilter(tabStyleFiltrer.filter(element => element !== style));
+    }
+}
