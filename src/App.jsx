@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Accueil from './Page/Accueil/Accueil.jsx';
 import PageDetail from './Page/PageDetail/PageDetail.jsx';
 
-
 function App() {
   const [redirection, setRedirection] = useState(null);
 
@@ -19,7 +18,7 @@ function App() {
         <Route path="/page-detail/:id" element={<PageDetail />} />
       </Routes>
     </Router>
-    </>
+  </>
   );
 }
 

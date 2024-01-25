@@ -1,19 +1,29 @@
-import { React, useState } from "react";
+import { React, useEffect, useState, useRef } from "react";
+
 import Style from "./AffichageSalles.module.css";
 import filtreImg from "../../assets/icons8-filter-30.png";
 import { useNavigate } from "react-router-dom";
 
-function AffichageSalles({ salles, styles, stylesFilter }) {
-  const navigate = useNavigate();
+function AffichageSalles({ salles, stylesFilter }) {
+  const searchInputRef = useRef();
   const [listeSalles, setSalles] = useState(salles);
+  const navigate = useNavigate();
 
+  console.log(stylesFilter);
   const handleClick = (id) => {
     navigate(`/page-detail/${id}`);
   };
 
+  useEffect(() => {
+    console.log("Use effect styule filter");
+    filtreSalles(salles, stylesFilter);
+    
+  }, [stylesFilter]);
+
   // Fonction de filtrage des salles avec les critères de recherche et de style
-  function filtre(salles, tabStyle, e) {
-    let motAchercher = e.target.value;
+  function filtreSalles(salles, stylesFilter) {
+    let motAchercher = searchInputRef.current.value;
+    console.log(motAchercher);
 
     if (motAchercher == null) {
       return null;
@@ -21,10 +31,11 @@ function AffichageSalles({ salles, styles, stylesFilter }) {
     const filtreNom = motAchercher.toLowerCase();
     const filteredResults = salles.filter(
       (item) =>
-        (item.nom.toLowerCase().includes(filtreNom) ||
+        ((item.nom.toLowerCase().includes(filtreNom) ||
           item.adresse.ville.toLowerCase().includes(filtreNom) ||
-          String(item.capacite).includes(filtreNom)) &&
-        tabStyle.map((style) => item.styles.includes(style))
+          String(item.capacite).includes(filtreNom)) && 
+          stylesFilter.every(style => item.styles.includes(style))
+    )
     );
     // Suppression des éléments existants dans la liste
     setSalles(filteredResults);
@@ -36,8 +47,9 @@ function AffichageSalles({ salles, styles, stylesFilter }) {
         <input
           type="text"
           placeholder="Rechercher Salle"
-          onChange={(e) => filtre(salles, styles.styles, e)}
+          onChange={(e) => filtreSalles(salles,stylesFilter, e)}
           className={Style.barreRecherche}
+          ref={searchInputRef}
         />
         <img className={Style.filtre} src={filtreImg} alt="filtre" />
         <div className={Style.filtreMenuDeroulant}></div>

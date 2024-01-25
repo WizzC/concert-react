@@ -18,10 +18,8 @@
   .page{
     display: flex;
     position: relative;
+    flex-grow: 4;
+
   }
-  .barreFiltre{
-    display: block;
-    position: sticky;
-    height: 100vh;
-  }
+
 } 
