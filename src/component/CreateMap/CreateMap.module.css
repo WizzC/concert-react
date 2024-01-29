@@ -6,8 +6,8 @@
 }
 @media screen and (min-width:1000px) {
     .mapContainer {
-        height: 20vw;
-        width: 20vw;
+        height: 13vw;
+        width: 13vw;
         margin: 10px auto;
         grid-column: 3;
     }

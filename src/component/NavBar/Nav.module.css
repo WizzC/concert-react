@@ -13,7 +13,10 @@ nav {
     font-weight: bold;
     text-transform: uppercase;
 }
-
+.rating,.barre {
+    display: flex;
+    align-items: center;
+}
 /* version mobile */
 @media screen and (max-width:800px) {
     .connexionMobile {
@@ -41,7 +44,10 @@ nav {
         height: 10vh;
 
     }
-
+    .rating {
+        display: block;
+        align-items: center;
+    }
 }
 
 /*version pc */
@@ -59,10 +65,7 @@ nav {
 
     }
 
-    .rating {
-        display: flex;
-        align-items: center;
-    }
+
 
     .detailSalle {
         margin-right: 10px;
@@ -86,6 +89,6 @@ nav {
 
     .nav {
         height: 15vh;
-
     }
+
 }
