@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import CreateMap from '../../component/CreateMap/CreateMap';
-import InformationSalle from '../../component/InformationSalle/InformationSalle';
-import AfficherAvis from '../../component/AfficherAvis/AfficherAvis';
-import DemanderAvis from '../../component/DemanderAvis/DemanderAvis';
-import AfficherConcerts from '../../component/AfficherConcerts/AfficherConcerts';
+import InformationSalle from '../../component/pageDetail/InformationSalle/InformationSalle';
+import AfficherAvis from '../../component/pageDetail/AfficherAvis/AfficherAvis';
+import DemanderAvis from '../../component/pageDetail/DemanderAvis/DemanderAvis';
+import AfficherConcerts from '../../component/pageDetail/AfficherConcerts/AfficherConcerts';
 import { useParams } from 'react-router-dom';
 import Style from './PageDetail.module.css'
 import Navbar from '../../component/NavBar/Nav';
@@ -28,7 +28,7 @@ function PageDetail() {
     }, [])
     return (   
         <>
-            <Navbar className={Style.navbar} page={"detail"} salle={salle} />
+            <Navbar className={Style.navbar}  salle={salle} />
 
         <div className={Style.pageDetail}>
             <div className={Style.listeConcert}>

@@ -1,7 +1,7 @@
 import { React, useEffect, useState, useRef } from "react";
 
 import Style from "./AffichageSalles.module.css";
-import filtreImg from "../../assets/icons8-filter-30.png";
+import filtreImg from "../../../assets/icons8-filter-30.png";
 import { useNavigate } from "react-router-dom";
 
 function AffichageSalles({ salles, stylesFilter }) {
@@ -20,7 +20,7 @@ function AffichageSalles({ salles, stylesFilter }) {
     
   }, [stylesFilter]);
 
-  // Fonction de filtrage des salles avec les critères de recherche et de style
+
   function filtreSalles(salles, stylesFilter) {
     let motAchercher = searchInputRef.current.value;
     console.log(motAchercher);
@@ -37,7 +37,7 @@ function AffichageSalles({ salles, stylesFilter }) {
           stylesFilter.every(style => item.styles.includes(style))
     )
     );
-    // Suppression des éléments existants dans la liste
+
     setSalles(filteredResults);
   }
 
