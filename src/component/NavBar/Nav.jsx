@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
 
 
-function Nav({page,salle=null}) {
+function Nav({salle=null}) {
     const navigate = useNavigate();
     const handleClick = () => {
         navigate(`/`);
@@ -27,7 +27,7 @@ function Nav({page,salle=null}) {
                 <img className={Style.logo} src={logo} alt="Logo" onClick={handleClick}/>
                 <h1 className={Style.nomSite}>Salle de Conserf</h1>
             </div>
-            {page=="detail"? 
+            {salle!=null? 
             <div className={Style.rating}>
                 <h2 className={Style.detailSalle}>{salle.nom}</h2>
                 <Rating className="rate" allowFraction transition initialValue={noteMoyen} readonly={true} />

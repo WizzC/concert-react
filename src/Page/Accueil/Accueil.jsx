@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import AffichageFiltre from '../../component/Filtre/Filtre';
-import AffichageSalles from '../../component/AfficherSalles/AffichageSalles';
+import AffichageFiltre from '../../component/accueil/Filtre/Filtre';
+import AffichageSalles from '../../component/accueil/AfficherSalles/AffichageSalles';
 import Style from'./Accueil.module.css';
 import Navbar from '../../component/NavBar/Nav';
 
@@ -8,9 +8,9 @@ function Accueil() {
     const [salles, setSalles] = useState([]);
     const [styles, setStyles] = useState(null);
     const [tabStyleFiltrer, setTabstyleFiltrer] = useState([])
-    const [barreRecherche, setBarreRecherche] = useState()
-    const [fonctionFiltre,setFonctionFiltre] = useState() //
+
     const url = 'https://localhost:44314/api/';
+
 
     useEffect(() => {
         fetch(`${url}Salles`)
@@ -27,15 +27,14 @@ function Accueil() {
             setStyles(style)
         })
     }, [])
-
+// console.log(tabStyleFiltrer)
     return (
     <>
 
-        <Navbar page={"accueil"} />
+        <Navbar />
         <div className= {Style.page} >
             {styles !== null &&  <AffichageFiltre styles={styles} tabStyleFiltrer={tabStyleFiltrer} setTabStyleFilter={setTabstyleFiltrer} />}
-
-            {salles.length > 0 && <AffichageSalles salles={salles} stylesFilter={tabStyleFiltrer} setBarreRecherche={setBarreRecherche} setFonctionFiltre={setFonctionFiltre} />}
+            {salles.length > 0 && <AffichageSalles salles={salles} stylesFilter={tabStyleFiltrer} />}
         </div>
 
     </>

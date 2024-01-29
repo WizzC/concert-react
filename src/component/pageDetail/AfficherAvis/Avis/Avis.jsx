@@ -1,8 +1,6 @@
 import React from "react";
 import { Rating } from 'react-simple-star-rating'
 import Styles from './Avis.module.css'
-
-
 function Avis({ avis }) {
 
     let date = new Date(avis.date);
@@ -24,4 +22,4 @@ function Avis({ avis }) {
       />
     )
   }
-export default Avis
+  export default Avis
