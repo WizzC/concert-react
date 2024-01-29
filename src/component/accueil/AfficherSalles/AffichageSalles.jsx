@@ -9,7 +9,6 @@ function AffichageSalles({ salles, stylesFilter }) {
   const [listeSalles, setSalles] = useState(salles);
   const navigate = useNavigate();
 
-  console.log(stylesFilter);
   const handleClick = (id) => {
     navigate(`/page-detail/${id}`);
   };
@@ -36,7 +35,7 @@ function AffichageSalles({ salles, stylesFilter }) {
           stylesFilter.every(style => item.styles.includes(style))
     )
     );
-
+      
     setSalles(filteredResults);
   }
 

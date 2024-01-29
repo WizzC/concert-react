@@ -17,6 +17,7 @@
 
 .labelStyle{
     font-size: 1.3em;
+    text-transform: capitalize;
 }
 .barreFiltre{
     display: none;

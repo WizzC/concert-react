@@ -5,11 +5,12 @@ import React from "react";
 
 
 
-function AffichageFiltre({ styles, stylesFilter, setTabStyleFilter }) {
+function AffichageFiltre({ tabStyles, stylesFilter, setTabStyleFilter }) {
 
   return (
+    console.log(tabStyles),
     <div className={Style.barreFiltre}>
-      {styles.styles.map((style, index) => (
+      {tabStyles.map((styles, index) => styles.map((style, index) =>(
         <div key={index} className={Style.group}>
           <input id={style}
             className={Style.inputStyle}
@@ -23,9 +24,9 @@ function AffichageFiltre({ styles, stylesFilter, setTabStyleFilter }) {
             {style}
           </label>
         </div>
-      ))
+      )))
       }
-      {/* { coordinates.length > 0 && <CreateMap coordinates={coordinates} />} */}
+
       
     </div>
   );
