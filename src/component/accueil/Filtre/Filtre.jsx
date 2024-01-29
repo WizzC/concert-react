@@ -13,8 +13,9 @@ function AffichageFiltre({ styles, stylesFilter,tabSalleFiltrer, setTabStyleFilt
     tabCoordinates.push(salle.adresse.localisation.coordinates)
   })
   return (
+    console.log(tabStyles),
     <div className={Style.barreFiltre}>
-      {styles.styles.map((style, index) => (
+      {tabStyles.map((styles, index) => styles.map((style, index) =>(
         <div key={index} className={Style.group}>
           <input id={style}
             className={Style.inputStyle}
@@ -28,7 +29,7 @@ function AffichageFiltre({ styles, stylesFilter,tabSalleFiltrer, setTabStyleFilt
             {style}
           </label>
         </div>
-      ))
+      )))
       }
       <div className={Style.infoMap}>
       <CreateMap className={Style.carte} coordinates={tabCoordinates} />
