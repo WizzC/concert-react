@@ -34,8 +34,11 @@ function AffichageFiltre({ styles, tabStyleFiltrer, setTabStyleFilter ,fonctionF
 
 export default AffichageFiltre;
 
-
-function remplirTab({ style , tabStyleFiltrer, setTabStyleFilter ,e}){
+/**
+ * Remplir le tableau de styles en function de ce que l'utilisateur choisit
+ * @param {*} param0 Json des éléments à modifier
+ */
+function remplirTab({ style, tabStyleFiltrer, setTabStyleFilter ,e}) {
     if(e.target.checked){
       setTabStyleFilter([...tabStyleFiltrer,style]);
     }

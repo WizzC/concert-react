@@ -12,7 +12,6 @@ function Accueil() {
     const [fonctionFiltre,setFonctionFiltre] = useState() //
     const url = 'https://localhost:44314/api/';
 
-    console.log(fonctionFiltre);
     useEffect(() => {
         fetch(`${url}Salles`)
         .then(res => res.json())
