@@ -36,7 +36,8 @@ export default AffichageFiltre;
 
 
 function remplirTab({ style , stylesFilter, setTabStyleFilter ,e}){
-    if(e.target.checked){
+  console.log(stylesFilter)
+   if(e.target.checked){
       setTabStyleFilter([...stylesFilter,style]);
     }
     else{

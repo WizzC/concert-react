@@ -15,7 +15,6 @@ function AffichageSalles({ salles, stylesFilter }) {
   };
 
   useEffect(() => {
-    console.log("Use effect styule filter");
     filtreSalles(salles, stylesFilter);
     
   }, [stylesFilter]);
@@ -23,7 +22,7 @@ function AffichageSalles({ salles, stylesFilter }) {
 
   function filtreSalles(salles, stylesFilter) {
     let motAchercher = searchInputRef.current.value;
-    console.log(motAchercher);
+    // console.log(motAchercher);
 
     if (motAchercher == null) {
       return null;

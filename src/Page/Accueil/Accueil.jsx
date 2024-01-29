@@ -33,7 +33,7 @@ function Accueil() {
 
         <Navbar />
         <div className= {Style.page} >
-            {styles !== null &&  <AffichageFiltre styles={styles} tabStyleFiltrer={tabStyleFiltrer} setTabStyleFilter={setTabstyleFiltrer} />}
+            {styles !== null &&  <AffichageFiltre styles={styles} stylesFilter={tabStyleFiltrer} setTabStyleFilter={setTabstyleFiltrer} />}
             {salles.length > 0 && <AffichageSalles salles={salles} stylesFilter={tabStyleFiltrer} />}
         </div>
 
