@@ -4,12 +4,12 @@ import Style from "./AffichageSalles.module.css";
 import filtreImg from "../../../assets/icons8-filter-30.png";
 import { useNavigate } from "react-router-dom";
 
-function AffichageSalles({ salles, stylesFilter }) {
+function AffichageSalles({ salles,setTabsalleFiltrer, stylesFilter }) {
   const searchInputRef = useRef();
   const [listeSalles, setSalles] = useState(salles);
   const navigate = useNavigate();
 
-  console.log(stylesFilter);
+  // console.log(stylesFilter);
   const handleClick = (id) => {
     navigate(`/page-detail/${id}`);
   };
@@ -38,6 +38,7 @@ function AffichageSalles({ salles, stylesFilter }) {
     );
 
     setSalles(filteredResults);
+    setTabsalleFiltrer(filteredResults);
   }
 
   return (

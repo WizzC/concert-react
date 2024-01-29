@@ -1,12 +1,17 @@
 import Style from "./Filtre.module.css";
 import React from "react";
-// import CreateMap from '../../component/CreateMap/CreateMap';
+import CreateMap from '../../CreateMap/CreateMap';
 
 
 
 
-function AffichageFiltre({ styles, stylesFilter, setTabStyleFilter }) {
+function AffichageFiltre({ styles, stylesFilter,tabSalleFiltrer, setTabStyleFilter }) {
 
+  let tabCoordinates=[];
+  
+  tabSalleFiltrer.map((salle)=>{
+    tabCoordinates.push(salle.adresse.localisation.coordinates)
+  })
   return (
     <div className={Style.barreFiltre}>
       {styles.styles.map((style, index) => (
@@ -25,8 +30,11 @@ function AffichageFiltre({ styles, stylesFilter, setTabStyleFilter }) {
         </div>
       ))
       }
-      {/* { coordinates.length > 0 && <CreateMap coordinates={coordinates} />} */}
-      
+      <div className={Style.infoMap}>
+      <CreateMap className={Style.carte} coordinates={tabCoordinates} />
+      </div>
+
+    
     </div>
   );
   
@@ -36,7 +44,7 @@ export default AffichageFiltre;
 
 
 function remplirTab({ style , stylesFilter, setTabStyleFilter ,e}){
-  console.log(stylesFilter)
+  // console.log(stylesFilter)
    if(e.target.checked){
       setTabStyleFilter([...stylesFilter,style]);
     }

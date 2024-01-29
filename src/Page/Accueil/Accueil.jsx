@@ -8,6 +8,7 @@ function Accueil() {
     const [salles, setSalles] = useState([]);
     const [styles, setStyles] = useState(null);
     const [tabStyleFiltrer, setTabstyleFiltrer] = useState([])
+    const [tabSalleFiltrer, setTabsalleFiltrer] = useState([])
 
     const url = 'https://localhost:44314/api/';
 
@@ -33,8 +34,8 @@ function Accueil() {
 
         <Navbar />
         <div className= {Style.page} >
-            {styles !== null &&  <AffichageFiltre styles={styles} stylesFilter={tabStyleFiltrer} setTabStyleFilter={setTabstyleFiltrer} />}
-            {salles.length > 0 && <AffichageSalles salles={salles} stylesFilter={tabStyleFiltrer} />}
+            {styles !== null &&  <AffichageFiltre styles={styles} tabSalleFiltrer={tabSalleFiltrer} stylesFilter={tabStyleFiltrer} setTabStyleFilter={setTabstyleFiltrer} />}
+            {salles.length > 0 && <AffichageSalles salles={salles} setTabsalleFiltrer={setTabsalleFiltrer} stylesFilter={tabStyleFiltrer} />}
         </div>
 
     </>

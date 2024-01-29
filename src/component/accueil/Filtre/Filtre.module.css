@@ -21,6 +21,9 @@
 .barreFiltre{
     display: none;
   }
+.infoMap{
+  height: 150px;
+}
 
   @media screen and (min-width:1000px){
 
