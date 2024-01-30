@@ -20,10 +20,7 @@ function AffichageSalles({
 
   // lance la focntion filtresalle au lancement de la page accueil
   useEffect(() => {
-    console.log("Le useEffect a été déclenché");
     filtreSalles(salles, stylesFilter, barreRecherche);
-
-
   }, [barreRecherche, stylesFilter]);
 
   // filtrage des salles selon la barre de recherche et styles

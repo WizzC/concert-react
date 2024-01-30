@@ -1,10 +1,6 @@
 import Style from "./Filtre.module.css";
 import React from "react";
-<<<<<<< HEAD
-
-=======
 import CreateMap from "../../CreateMap/CreateMap";
->>>>>>> 2a8f3e2f1a773f2e43cb2a7b40e5d43284f67216
 
 function AffichageFiltre({
   tabStyles,
