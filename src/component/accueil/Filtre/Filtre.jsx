@@ -1,5 +1,5 @@
 import Style from "./Filtre.module.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CreateMap from "../../CreateMap/CreateMap";
 
 function AffichageFiltre({
@@ -8,11 +8,20 @@ function AffichageFiltre({
   tabSalleFiltrer,
   setTabStyleFilter,
 }) {
-  let tabCoordinates = [];
+  const [dicCoordinates, setDicCoordinates] = useState({});
 
-  tabSalleFiltrer.map((salle) => {
-    tabCoordinates.push(salle.adresse.localisation.coordinates);
-  });
+  useEffect(() => {
+    // Créer une nouvelle copie du dictionnaire avec les nouvelles coordonnées
+    const nouveauDictionnaire = {};
+    
+    tabSalleFiltrer.forEach((salle) => {
+      nouveauDictionnaire[salle.nom] = salle.adresse.localisation.coordinates;
+    });
+
+    // Mettre à jour l'état avec le nouveau dictionnaire
+    setDicCoordinates(nouveauDictionnaire);
+  }, [tabSalleFiltrer]);
+
   return (
     <div className={Style.barreFiltre}>
       <div className={Style.listeStyle}>
@@ -36,7 +45,7 @@ function AffichageFiltre({
         )}
       </div>
       <div className={Style.infoMap}>
-        <CreateMap className={Style.carte} coordinates={tabCoordinates} />
+        <CreateMap className={Style.carte} coordinates={dicCoordinates} />
       </div>
     </div>
   );
