@@ -10,8 +10,8 @@ function Accueil() {
     const [salles, setSalles] = useState([]);
     const [tabStyleFiltrer, setTabstyleFiltrer] = useState([])
     const [tabSalleFiltrer, setTabsalleFiltrer] = useState([])
-    const [tabStyle,setTabStyle]= useState([])
-    const [barreRecherche , setBarreRecherche] = useState("")
+    const [tabStyle, setTabStyle] = useState([])
+    const [barreRecherche, setBarreRecherche] = useState("")
 
 
 
@@ -34,15 +34,14 @@ function Accueil() {
     }, []);
 
     return (
-    <>
+        <>
+            <Navbar setBarreRecherche={setBarreRecherche} />
+            <div className={Style.page} >
+                {tabStyle !== null && <AffichageFiltre tabStyles={tabStyle} tabSalleFiltrer={tabSalleFiltrer} stylesFilter={tabStyleFiltrer} setTabStyleFilter={setTabstyleFiltrer} />}
+                {salles.length > 0 && <AffichageSalles barreRecherche={barreRecherche} salles={salles} setTabsalleFiltrer={setTabsalleFiltrer} stylesFilter={tabStyleFiltrer} />}
+            </div>
 
-        <Navbar setBarreRecherche={setBarreRecherche}/>
-        <div className= {Style.page} >
-            {tabStyle !== null &&  <AffichageFiltre tabStyles={tabStyle} tabSalleFiltrer={tabSalleFiltrer} stylesFilter={tabStyleFiltrer} setTabStyleFilter={setTabstyleFiltrer} />}
-            {salles.length > 0 && <AffichageSalles  barreRecherche={barreRecherche} salles={salles} setTabsalleFiltrer={setTabsalleFiltrer} stylesFilter={tabStyleFiltrer} />}
-        </div>
-
-    </>
+        </>
     )
 }
 

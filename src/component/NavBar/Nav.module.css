@@ -76,12 +76,7 @@ nav {
         align-items: center;
     }
 
-    .btnConnexion {
-        background-color: #D56062;
-        width: auto;
-        padding: 10px 40px;
-        align-self: center;
-    }
+
 
     .connexionMobile {
         display: none;

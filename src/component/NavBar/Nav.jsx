@@ -5,7 +5,7 @@ import connexionMobile from '../../assets/icons8-male-user-32.png';
 import { useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
 import BarreRecherche from "../accueil/BarreDeRecherche/barreDeRecherche";
-
+import Connexion from "../../Page/Connexion/Connexion";
 function Nav({salle=null, setBarreRecherche=null}) {
     const navigate = useNavigate();
     const handleClick = ({route}) => {
@@ -18,9 +18,6 @@ function Nav({salle=null, setBarreRecherche=null}) {
 
     }
 
-
-
-    
         return (
         <nav>
             <div className={Style.identification}>
@@ -42,7 +39,7 @@ function Nav({salle=null, setBarreRecherche=null}) {
             :""
             }
             <div className={Style.connexion}>
-                <button className={Style.btnConnexion}>Connexion</button>
+                <Connexion  className={Style.btnConnexion}/>
                 <img className={Style.connexionMobile} src={connexionMobile} alt="Connexion" />
             </div>
         </nav>
