@@ -66,6 +66,7 @@ section {
         justify-content: center;
         margin: 0.5% 0.5%;
         border-radius: 5%;
+        cursor: pointer;
     }
 
     p {

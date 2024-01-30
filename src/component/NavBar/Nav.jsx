@@ -8,8 +8,8 @@ import BarreRecherche from "../accueil/BarreDeRecherche/barreDeRecherche";
 
 function Nav({salle=null, setBarreRecherche=null}) {
     const navigate = useNavigate();
-    const handleClick = () => {
-        navigate(`/`);
+    const handleClick = ({route}) => {
+        navigate(`/${route}`);
     };
     let noteMoyen=0;
     if(salle !=null && salle.avis!=null){
@@ -24,7 +24,7 @@ function Nav({salle=null, setBarreRecherche=null}) {
         return (
         <nav>
             <div className={Style.identification}>
-                <img className={Style.logo} src={logo} alt="Logo" onClick={handleClick}/>
+                <img className={Style.logo} src={logo} alt="Logo" onClick={()=>handleClick({route:""})}/>
                 <h1 className={Style.nomSite}>Salle de Conserf</h1>
             </div>
             {/* page detail  */}
@@ -34,9 +34,12 @@ function Nav({salle=null, setBarreRecherche=null}) {
                 <Rating className={"rate"} allowFraction transition initialValue={noteMoyen} readonly={true} />
             </div>:
             // page accueil
+            setBarreRecherche!=null?
             <div className={Style.barre}>
             <BarreRecherche setBarreRecherche={setBarreRecherche}/>
             </div>
+            //page connexion
+            :""
             }
             <div className={Style.connexion}>
                 <button className={Style.btnConnexion}>Connexion</button>
