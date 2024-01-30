@@ -1,10 +1,17 @@
-import React from "react";
+import React,{useState} from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 import styles from "./CreateMap.module.css";
 import "leaflet/dist/leaflet.css";
 
+
+
 function CreateMap({ coordinates }) {
+  // const [monDictionnaire, setMonDictionnaire] = useState({
+  //   "regvre": [43.85643,4.405415],
+  //   "ejrkfzef": [43.85643,5.405415],
+  //   "cle3": [43.85643,6.405415]
+  // })
   return (
     <>
       <MapContainer
@@ -18,12 +25,15 @@ function CreateMap({ coordinates }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {(typeof coordinates[0] == "number" && (
+        {
+        (typeof coordinates[0] == "number" && (
           <Marker position={[coordinates[0], coordinates[1]]}></Marker>
         )) ||
-          (coordinates.length > 0 &&
-            coordinates.map((marker, index) => (
-              <Marker key={index} position={marker}></Marker>
+          (coordinates !=null &&
+            Object.entries(coordinates).map(([cle, valeur])  => (
+              <Marker key={cle} position={valeur}>
+                <Popup>{cle}</Popup>
+              </Marker>
             )))}
       </MapContainer>
     </>
