@@ -5,11 +5,10 @@ import 'dayjs/locale/fr'
 import dayjs from 'dayjs'
 
 const Stars = ({ salle ,setSalle}) => {
-  const [rating, setRating] = useState(100) // initial rating value
-  console.log(salle);
+  const [rating, setRating] = useState(100) 
 
   let newSalle = salle;
-  // Catch Rating value
+
   const handleRating = (rate) => {
     setRating(rate)
     if (newSalle.avis != null) {
@@ -35,7 +34,8 @@ const Stars = ({ salle ,setSalle}) => {
       },
       body: JSON.stringify(newSalle)
     };
-console.log(options);
+
+
     fetch('https://localhost:44314/api/Salles/' + newSalle.id, options)
     .then(rep => {
       if(rep.status == 204)

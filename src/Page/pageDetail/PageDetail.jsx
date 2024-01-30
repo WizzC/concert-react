@@ -6,13 +6,14 @@ import AfficherConcerts from '../../component/pageDetail/AfficherConcerts/Affich
 import { useParams } from 'react-router-dom';
 import Style from './PageDetail.module.css'
 import Navbar from '../../component/NavBar/Nav';
+import { url } from "../../env";
 
 
 function PageDetail() {
 
     const { id } = useParams();
 
-    const urlGetById = 'https://localhost:44314/api/Salles/'+id;
+    const urlGetById = `${url}Salles/`+id;
 
     const [salle, setSalle] = useState({});
     const [coordinates, setCoordinates] = useState([]);

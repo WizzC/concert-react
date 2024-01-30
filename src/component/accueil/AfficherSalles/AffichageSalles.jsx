@@ -1,63 +1,57 @@
 import { React, useEffect, useState, useRef } from "react";
-
 import Style from "./AffichageSalles.module.css";
-import filtreImg from "../../../assets/icons8-filter-30.png";
 import { useNavigate } from "react-router-dom";
 
-function AffichageSalles({ salles, stylesFilter }) {
-  const searchInputRef = useRef();
+function AffichageSalles({
+  salles,
+  setTabsalleFiltrer,
+  stylesFilter,
+  barreRecherche,
+}) {
   const [listeSalles, setSalles] = useState(salles);
   const navigate = useNavigate();
 
+  // console.log(stylesFilter);
+
+  //redirection vers page details
   const handleClick = (id) => {
     navigate(`/page-detail/${id}`);
   };
 
+  // lance la focntion filtresalle au lancement de la page accueil
   useEffect(() => {
-    filtreSalles(salles, stylesFilter);
-    
-  }, [stylesFilter]);
+    console.log("Le useEffect a été déclenché");
+    filtreSalles(salles, stylesFilter, barreRecherche);
 
 
-  function filtreSalles(salles, stylesFilter) {
-    let motAchercher = searchInputRef.current.value;
-    // console.log(motAchercher);
+  }, [barreRecherche, stylesFilter]);
 
-    if (motAchercher == null) {
-      return null;
-    }
-    const filtreNom = motAchercher.toLowerCase();
+  // filtrage des salles selon la barre de recherche et styles
+  const filtreSalles = (salles, stylesFilter, barreRecherche) => {
+
+    const filtreNom = barreRecherche.toLowerCase();
     const filteredResults = salles.filter(
       (item) =>
-        ((item.nom.toLowerCase().includes(filtreNom) ||
+        (item.nom.toLowerCase().includes(filtreNom) ||
           item.adresse.ville.toLowerCase().includes(filtreNom) ||
-          String(item.capacite).includes(filtreNom)) && 
-          stylesFilter.every(style => item.styles.includes(style))
-    )
+          String(item.capacite).includes(filtreNom)) &&
+        stylesFilter.every((style) => item.styles.includes(style))
     );
-      
-    setSalles(filteredResults);
-  }
 
+    setSalles(filteredResults);
+    setTabsalleFiltrer(filteredResults);
+  };
+
+  //affichage des salles
   return (
     <section>
-      <div className={Style.hautPage}>
-        <input
-          type="text"
-          placeholder="Rechercher Salle"
-          onChange={(e) => filtreSalles(salles,stylesFilter, e)}
-          className={Style.barreRecherche}
-          ref={searchInputRef}
-        />
-        <img className={Style.filtre} src={filtreImg} alt="filtre" />
-        <div className={Style.filtreMenuDeroulant}></div>
-      </div>
       <main>
         {listeSalles.map((salle) => (
           <div
             className={Style.salles}
             key={salle.id}
-            onClick={() => handleClick(salle.id)}>
+            onClick={() => handleClick(salle.id)}
+          >
             <p className={Style.nom}>{salle.nom}</p>
             <br />
             <p id="ville">{salle.adresse.ville}</p>

@@ -3,12 +3,17 @@ import AffichageFiltre from '../../component/accueil/Filtre/Filtre';
 import AffichageSalles from '../../component/accueil/AfficherSalles/AffichageSalles';
 import Style from './Accueil.module.css';
 import Navbar from '../../component/NavBar/Nav';
+import { url } from "../../env";
 
 function Accueil() {
+
     const [salles, setSalles] = useState([]);
-    const [tabStyleFiltrer, setTabstyleFiltrer] = useState([]);
-    const [tabStyle, setTabStyle] = useState([]);
-    const url = 'https://localhost:44314/api/';
+    const [tabStyleFiltrer, setTabstyleFiltrer] = useState([])
+    const [tabSalleFiltrer, setTabsalleFiltrer] = useState([])
+    const [tabStyle,setTabStyle]= useState([])
+    const [barreRecherche , setBarreRecherche] = useState("")
+
+
 
     useEffect(() => {
         fetch(`${url}Salles`)
@@ -23,18 +28,21 @@ function Accueil() {
                 });
                 let uniqueStyles = Array.from(new Set(stylesArray));
                 setTabStyle([uniqueStyles.sort()]);
-                console.log(tabStyle);
+                // console.log(tabStyle);
+
             });
     }, []);
 
     return (
-        <>
-            <Navbar />
-            <div className={Style.page}>
-                {tabStyle !== null && <AffichageFiltre tabStyles={tabStyle} stylesFilter={tabStyleFiltrer} setTabStyleFilter={setTabstyleFiltrer} />}
-                {salles.length > 0 && <AffichageSalles salles={salles} stylesFilter={tabStyleFiltrer} />}
-            </div>
-        </>
+    <>
+
+        <Navbar setBarreRecherche={setBarreRecherche}/>
+        <div className= {Style.page} >
+            {tabStyle !== null &&  <AffichageFiltre tabStyles={tabStyle} tabSalleFiltrer={tabSalleFiltrer} stylesFilter={tabStyleFiltrer} setTabStyleFilter={setTabstyleFiltrer} />}
+            {salles.length > 0 && <AffichageSalles  barreRecherche={barreRecherche} salles={salles} setTabsalleFiltrer={setTabsalleFiltrer} stylesFilter={tabStyleFiltrer} />}
+        </div>
+
+    </>
     )
 }
 

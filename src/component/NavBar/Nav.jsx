@@ -4,9 +4,9 @@ import logo from '../../assets/logo.png';
 import connexionMobile from '../../assets/icons8-male-user-32.png';
 import { useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
+import BarreRecherche from "../accueil/BarreDeRecherche/barreDeRecherche";
 
-
-function Nav({salle=null}) {
+function Nav({salle=null, setBarreRecherche=null}) {
     const navigate = useNavigate();
     const handleClick = () => {
         navigate(`/`);
@@ -27,11 +27,16 @@ function Nav({salle=null}) {
                 <img className={Style.logo} src={logo} alt="Logo" onClick={handleClick}/>
                 <h1 className={Style.nomSite}>Salle de Conserf</h1>
             </div>
+            {/* page detail  */}
             {salle!=null? 
             <div className={Style.rating}>
                 <h2 className={Style.detailSalle}>{salle.nom}</h2>
-                <Rating className="rate" allowFraction transition initialValue={noteMoyen} readonly={true} />
-            </div>:""
+                <Rating className={"rate"} allowFraction transition initialValue={noteMoyen} readonly={true} />
+            </div>:
+            // page accueil
+            <div className={Style.barre}>
+            <BarreRecherche setBarreRecherche={setBarreRecherche}/>
+            </div>
             }
             <div className={Style.connexion}>
                 <button className={Style.btnConnexion}>Connexion</button>

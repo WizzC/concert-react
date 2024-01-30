@@ -11,19 +11,6 @@ section {
 /* version mobile */
 @media screen and (max-width:500px) {
 
-    /* affichage barre de recherche */
-    .barreRecherche {
-        border-radius: 25px;
-        width: 85%;
-        height: 40px;
-        padding-left: 3%;
-    }
-
-    .hautPage {
-        display: flex;
-    }
-
-    /* Affichages des salles */
     main {
         flex-direction: column;
     }
@@ -64,21 +51,6 @@ section {
 /*version tablette */
 @media screen and (min-width:500px) {
 
-    /* affichage barre de recherche */
-    .barreRecherche {
-        border-radius: 25px;
-        width: 50%;
-        height: 40px;
-        padding-left: 3%;
-    }
-
-    .hautPage {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2%;
-    }
-
-    /* Affichages des salles */
     main {
         display: flex;
         flex-wrap: wrap;
@@ -131,25 +103,7 @@ section {
 /*version pc */
 @media screen and (min-width:1000px) {
 
-    /* affichage barre de recherche */
-    .barreRecherche {
-        border-radius: 25px;
-        width: 50%;
-        height: 40px;
-        padding-left: 3%;
-    }
 
-    .hautPage {
-        display: flex;
-        justify-content: start;
-        margin: 0% 0% 2% 2%;
-    }
-
-    .filtre {
-        display: none;
-    }
-
-    /* Affichages des salles */
     main {
         display: flex;
         flex-wrap: wrap;
@@ -158,6 +112,17 @@ section {
         overflow-y: auto;
         height: 70vh;
         min-width: 150px;
+        margin-right: 50px;
+    }
+    main::-webkit-scrollbar {
+        width: 10px;
+        
+    }
+      
+    main::-webkit-scrollbar-thumb{
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #E8E1EF;
     }
 
     div .salles {
