@@ -65,7 +65,12 @@ nav {
 
     }
 
-
+    .btnConnexion {
+        background-color: #D56062;
+        width: auto;
+        padding: 10px 40px;
+        align-self: center;
+    }
 
     .detailSalle {
         margin-right: 10px;

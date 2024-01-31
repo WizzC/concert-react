@@ -1,6 +1,7 @@
 import React  from 'react';
 import Modal from 'react-modal';
-import Style from './Connexion.module.css'
+import Style from './Connexion.module.css';
+
 
 
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
@@ -47,10 +48,11 @@ function Connexion() {
 }
 
    function recupForm(e){
-    e.preventDefault();
+
     user["Email"]=e.target[0].value;
     user["Password"]=e.target[1].value;
-    connexionRequest()
+    connexionRequest();
+    handleClick({route : ""});
    }
 
 
@@ -64,7 +66,7 @@ function Connexion() {
         className={Style.modal}
       >
         <h2>Connexion </h2>
-        <form onSubmit={recupForm} method='POST'>
+        <form onSubmit={()=>{recupForm}} method='POST'>
           <div className={Style.divForm}>
             <label htmlFor="mail">Mail</label>
             <input className={Style.inputForm} id="mail" type="text" />
