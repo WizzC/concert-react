@@ -11,9 +11,7 @@ function Accueil() {
     const [tabStyleFiltrer, setTabstyleFiltrer] = useState([])
     const [tabSalleFiltrer, setTabsalleFiltrer] = useState([])
     const [tabStyle, setTabStyle] = useState([])
-    const [barreRecherche, setBarreRecherche] = useState("")
-
-
+    const [barreRecherche, setBarreRecherche] = useState("")    
 
     useEffect(() => {
         fetch(`${url}Salles`)
