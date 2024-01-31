@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState,createContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Accueil from './Page/Accueil/Accueil.jsx';
 import PageDetail from './Page/PageDetail/PageDetail.jsx';
 
+export const ContextJwt = createContext(localStorage.getItem("tokens"));
 
-function App() {
+
+export default function App() {
   const [redirection, setRedirection] = useState(null);
-
   const handleRedirection = (nouvelleURL) => {
     setRedirection(nouvelleURL);
   };
@@ -22,5 +23,3 @@ function App() {
   </>
   );
 }
-
-export default App;

@@ -1,5 +1,4 @@
-import React , {useEffect} from 'react';
-import ReactDOM from 'react-dom';
+import React  from 'react';
 import Modal from 'react-modal';
 import Style from './Connexion.module.css'
 
@@ -9,7 +8,7 @@ import Style from './Connexion.module.css'
 
 function Connexion() {
   let user ={"Email":"","Password":""};
-  let subtitle;
+
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
@@ -20,7 +19,6 @@ function Connexion() {
     setIsOpen(false);
   }
   function connexionRequest(){
-    let tokens;
     const options = {
         method: 'POST',
         headers: {
@@ -32,8 +30,8 @@ function Connexion() {
     fetch("https://localhost:44314/api/User/authenticate", options)
         .then(res => res.json())
         .then(users => {
-            tokens = users.token;
-            console.log(tokens);
+            localStorage.setItem("tokens", users.token)
+            console.log(localStorage.getItem("tokens"));
             // test(tokens);  // Appel à test après avoir obtenu le token
         });
 
