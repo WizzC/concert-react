@@ -6,7 +6,7 @@ h2 {
 
 form {
     border:solid black 1px;
-    box-shadow: 5px 3px 10px gray;
+    box-shadow: 5px 3px 10px gray,inset 5px 3px 20px rgb(128, 125, 125);
     margin: 2vw;
     padding: 2vw;
     display: flex;

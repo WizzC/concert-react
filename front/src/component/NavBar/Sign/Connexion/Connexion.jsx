@@ -1,5 +1,6 @@
 import React from 'react';
 import Style from './Connexion.module.css';
+// import { jwtDecode } from "jwt-decode";
 
 
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
@@ -19,6 +20,10 @@ function Connexion({setIsOpen}) {
         .then(res => res.json())
         .then(users => {
           localStorage.setItem("tokens",users.token)
+          localStorage.setItem("admin",users.admin)
+          console.log(users.admin)
+          // const decodedToken = jwtDecode(users.token);
+          // console.log(decodedToken)
           window.location.reload(false);
 
         });

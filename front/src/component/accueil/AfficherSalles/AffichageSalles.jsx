@@ -1,6 +1,7 @@
-import { React, useEffect, useState, useRef } from "react";
+import { React, useEffect, useState} from "react";
 import Style from "./AffichageSalles.module.css";
 import { useNavigate } from "react-router-dom";
+import FormCrud from "./FormCrud/FormCrud";
 
 function AffichageSalles({
   salles,
@@ -38,7 +39,7 @@ function AffichageSalles({
     setSalles(filteredResults);
     setTabsalleFiltrer(filteredResults);
   };
-
+  // console.log(localStorage.getItem("admin"))
   //affichage des salles
   return (
     <section>
@@ -58,6 +59,10 @@ function AffichageSalles({
             </div>
           </div>
         ))}
+        {localStorage.getItem("admin")=="true" && <div  className={Style.btnAdd}>
+            <FormCrud />
+          </div>}
+          
       </main>
     </section>
   );

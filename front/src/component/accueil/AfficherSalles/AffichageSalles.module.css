@@ -126,7 +126,7 @@ section {
         background-color: #E8E1EF;
     }
 
-    div .salles {
+    div .salles, .btnAdd {
         width: 15vw;
         height: 25vh;
         background-color: #D56062;
@@ -169,4 +169,5 @@ section {
     .filtreMenuDeroulant {
         visibility: hidden;
     }
+
 }

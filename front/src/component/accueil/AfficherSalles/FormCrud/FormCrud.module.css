@@ -1,0 +1,12 @@
+    .btnAdd{
+        text-align: center;
+        margin: 0;
+        font-weight: normal;
+        font-size: 10em;
+        background-color: transparent;
+        padding: 0;
+    }
+    .divAdd{
+        display: flex;
+        justify-content: center;
+    }

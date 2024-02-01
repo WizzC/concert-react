@@ -1,11 +1,9 @@
-using IFramework.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using testMongo.Models;
 using testMongo.Services;
-using Umbraco.Core.Composing.CompositionExtensions;
+
 
 namespace testMongo
 {
@@ -17,8 +15,7 @@ namespace testMongo
             var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
             // Add services to the container.
             builder.Services.Configure<SallesDatabaseSettings>(builder.Configuration.GetSection("SallesDatabase"));
-            builder.Services.Configure<SallesDatabaseStyleSettings>(
-        builder.Configuration.GetSection("SallesDatabaseStyle"));
+
             builder.Services.Configure<UsersDatabaseSettings>(
         builder.Configuration.GetSection("UsersDatabase"));
 
@@ -28,7 +25,7 @@ builder.Configuration.GetSection("Security"));
 
             builder.Services.AddTransient<SallesService>();
 
-            builder.Services.AddTransient<StylesService>();
+
             builder.Services.AddTransient<UserService>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

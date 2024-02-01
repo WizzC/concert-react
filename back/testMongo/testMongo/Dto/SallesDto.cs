@@ -1,4 +1,6 @@
 ﻿
+using IFramework.Infrastructure;
+
 namespace testMongo.Dto
 {
     public class SallesDto

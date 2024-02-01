@@ -16,12 +16,13 @@ function Nav({ salle = null, setBarreRecherche = null }) {
     const handleClick = ({ route }) => {
         navigate(`/${route}`);
     };
-    console.log(contextJwt)
+
 
     function deconnexion(){
         localStorage.removeItem('tokens')
+        localStorage.removeItem('admin')
           window.location.reload(false);
-        console.log(contextJwt)
+
     }
 
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using IFramework.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using testMongo.Dto;
@@ -56,10 +57,11 @@ namespace testMongo.Controlers
         public ActionResult Login([FromBody] UsersDto user)
         {
             var token = _userService.Authenticate(user.Email, user.Password);
-            if (token == null)
+
+            if (token == (null,null))
                 return Unauthorized();
 
-            return Ok(new { token, user });
+            return Ok(new { token =  token.Item1, user , admin = token.Item2});
         }
     }
     

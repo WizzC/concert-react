@@ -4,20 +4,17 @@ import AffichageSalles from '../../component/accueil/AfficherSalles/AffichageSal
 import Style from './Accueil.module.css';
 import Navbar from '../../component/NavBar/Nav';
 import { url } from "../../env";
-import {ContextJwt} from "../../App"
 
 
 
 function Accueil() {
 
-    const contextJwt = useContext(ContextJwt) 
 
     const [salles, setSalles] = useState([]);
     const [tabStyleFiltrer, setTabstyleFiltrer] = useState([])
     const [tabSalleFiltrer, setTabsalleFiltrer] = useState([])
     const [tabStyle, setTabStyle] = useState([])
     const [barreRecherche, setBarreRecherche] = useState("")   
-
     useEffect(() => {
         fetch(`${url}Salles`)
             .then(res => res.json())
