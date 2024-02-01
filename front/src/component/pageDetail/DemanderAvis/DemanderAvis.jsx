@@ -21,9 +21,7 @@ const Stars = ({ salle ,setSalle}) => {
         "date": dayjs().format(),
         "note": rate * 2
       }]
-    }
-    
-   
+    }   
   }
 
   const envoyerDonner = () => {

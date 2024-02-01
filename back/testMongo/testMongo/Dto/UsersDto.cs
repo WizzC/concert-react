@@ -10,7 +10,7 @@ namespace testMongo.Dto
 
         public string Password { get; set; }
 
-        public bool Admin { get; set; }
+
     }
 
     public class UsersDtoOut

@@ -1,8 +1,11 @@
+using IFramework.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using testMongo.Models;
 using testMongo.Services;
+using Umbraco.Core.Composing.CompositionExtensions;
 
 namespace testMongo
 {

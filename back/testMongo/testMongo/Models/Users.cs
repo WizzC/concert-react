@@ -16,6 +16,6 @@ namespace testMongo.Models
         public string Password { get; set; }
 
         [BsonElement("admin")]
-        public bool Admin { get; set; }
+        public bool Admin { get; set; } = false;
     }
 }

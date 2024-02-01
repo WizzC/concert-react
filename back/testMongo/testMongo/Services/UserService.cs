@@ -1,11 +1,12 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
-using System.Configuration;
+
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using testMongo.Models;
+using Umbraco.Core.Models.Membership;
 
 namespace testMongo.Services
 {
@@ -32,10 +33,11 @@ namespace testMongo.Services
         }
         public string? Authenticate(string email, string password)
         {
-            var user = this.users.Find(x => x.Email == email && x.Password == password).FirstOrDefault();
+            var user = this.users.Find(x => x.Email == email).FirstOrDefault();
             if (user == null)
                 return null;
-
+            else if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
+                return null;
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.ASCII.GetBytes(key);
             var tokenDescriptor = new SecurityTokenDescriptor()
@@ -43,7 +45,10 @@ namespace testMongo.Services
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                      new Claim(ClaimTypes.Email, email),
+                    new Claim(ClaimTypes.Role,user.Admin? "Admin" :"")
+
                 }),
+
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(tokenKey),
@@ -52,5 +57,6 @@ namespace testMongo.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+        
     }
 }

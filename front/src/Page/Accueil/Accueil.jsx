@@ -17,7 +17,7 @@ function Accueil() {
     const [tabSalleFiltrer, setTabsalleFiltrer] = useState([])
     const [tabStyle, setTabStyle] = useState([])
     const [barreRecherche, setBarreRecherche] = useState("")   
-    console.log(contextJwt);
+
     useEffect(() => {
         fetch(`${url}Salles`)
             .then(res => res.json())

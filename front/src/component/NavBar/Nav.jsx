@@ -5,17 +5,24 @@ import connexionMobile from '../../assets/icons8-male-user-32.png';
 import { useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
 import BarreRecherche from "../accueil/BarreDeRecherche/barreDeRecherche";
-import Connexion from "../../Page/Connexion/Connexion";
+import Sign from "./Sign/Sign";
 import { ContextJwt } from "../../App"
 
 
 function Nav({ salle = null, setBarreRecherche = null }) {
+
     const navigate = useNavigate();
     const contextJwt = useContext(ContextJwt)
     const handleClick = ({ route }) => {
         navigate(`/${route}`);
     };
+    console.log(contextJwt)
 
+    function deconnexion(){
+        localStorage.removeItem('tokens')
+          window.location.reload(false);
+        console.log(contextJwt)
+    }
 
 
     let noteMoyen = 0;
@@ -46,11 +53,11 @@ function Nav({ salle = null, setBarreRecherche = null }) {
                     : ""
             }
             <div className={Style.connexion}>
-                {contextJwt == null ?
+                {contextJwt == null || contextJwt=='undefined' ?
                     <>
-                        <Connexion className={Style.btnConnexion} />
+                        <Sign className={Style.btnConnexion} />
                         <img className={Style.connexionMobile} src={connexionMobile} alt="Connexion" />
-                    </> : <button className={Style.btnConnexion} onClick={deconnexion()}>Déconnexion</button>
+                    </> : <button className={Style.btnConnexion} onClick={()=>{deconnexion()}}>Déconnexion</button>
                 }
 
             </div>

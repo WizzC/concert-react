@@ -13,13 +13,14 @@ namespace testMongo.Controlers
     public class UserController : Controller
     {
         private readonly UserService _userService;
-
-        public UserController(UserService userService)
+        private readonly AutoMapper.IMapper _mapper;
+        public UserController(UserService userService, AutoMapper.IMapper mapper)
         {
             _userService = userService;
+            _mapper = mapper;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult<List<Users>> GetUsers()
         {
@@ -29,7 +30,7 @@ namespace testMongo.Controlers
             return _userService.GetUsers();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id:length(24)}")]
         public ActionResult<Users> GetUser(string id)
         {
@@ -37,10 +38,14 @@ namespace testMongo.Controlers
             return Json(user);
         }
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpPost]
-        public ActionResult<Users> Create(Users user)
+        public ActionResult<Users> Create(UsersDto userDto)
         {
+            var user = _mapper.Map<Users>(userDto);
+
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
+    user.Password = hashedPassword;
             _userService.Create(user);
             return Json(user);
         }

@@ -43,7 +43,7 @@ public class SallesController : ControllerBase
         return NotFound();
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<ActionResult<Salle>> CreateSalle(Salle entity)
     {
@@ -55,7 +55,7 @@ public class SallesController : ControllerBase
         return CreatedAtRoute("GetSalleById", new { id = entity.Id }, entity);
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateSalle(int id, Salle entity)
     {
@@ -74,7 +74,7 @@ public class SallesController : ControllerBase
         return NoContent();
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

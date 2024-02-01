@@ -7,7 +7,7 @@ import PageDetail from './Page/PageDetail/PageDetail.jsx';
 //recuperation de local storage
 export const ContextJwt = createContext(localStorage.getItem("tokens"));
 
-
+console.log(localStorage.getItem("tokens"))
 export default function App() {
   const [redirection, setRedirection] = useState(null);
   const handleRedirection = (nouvelleURL) => {
