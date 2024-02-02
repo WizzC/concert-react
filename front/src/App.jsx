@@ -1,8 +1,8 @@
-import React, { useState,createContext } from 'react';
+import React, { useState, createContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Accueil from './Page/Accueil/Accueil.jsx';
 import PageDetail from './Page/PageDetail/PageDetail.jsx';
-
+import MyTabStyle from './Context/ContextStyle.jsx';
 
 //recuperation de local storage
 export const ContextJwt = createContext(localStorage.getItem("tokens"));
@@ -16,7 +16,7 @@ export default function App() {
     setRedirection(nouvelleURL);
   };
 
-  return (<>
+  return (<MyTabStyle>
     <Router>
       {redirection && <Navigate to={redirection} />}
       <Routes>
@@ -24,6 +24,6 @@ export default function App() {
         <Route path="/page-detail/:id" element={<PageDetail />} />
       </Routes>
     </Router>
-  </>
+    </MyTabStyle>
   );
 }

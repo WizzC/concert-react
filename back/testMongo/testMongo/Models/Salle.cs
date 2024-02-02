@@ -30,7 +30,7 @@ namespace testMongo.Models
         public bool Smac { get; set; }
 
         [BsonElement("concerts")]
-        public List<Concerts> Concerts { get; set; }
+        public List<Concerts>? Concerts { get; set; }
     }
 
 

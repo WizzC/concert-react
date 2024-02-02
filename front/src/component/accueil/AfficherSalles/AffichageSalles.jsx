@@ -1,4 +1,4 @@
-import { React, useEffect, useState} from "react";
+import { React, useEffect, useState } from "react";
 import Style from "./AffichageSalles.module.css";
 import { useNavigate } from "react-router-dom";
 import FormCrud from "./FormCrud/FormCrud";
@@ -44,6 +44,9 @@ function AffichageSalles({
   return (
     <section>
       <main>
+        {localStorage.getItem("admin") == "true" && <div className={Style.btnAdd}>
+          <FormCrud />
+        </div>}
         {listeSalles.map((salle) => (
           <div
             className={Style.salles}
@@ -59,10 +62,8 @@ function AffichageSalles({
             </div>
           </div>
         ))}
-        {localStorage.getItem("admin")=="true" && <div  className={Style.btnAdd}>
-            <FormCrud />
-          </div>}
-          
+
+
       </main>
     </section>
   );

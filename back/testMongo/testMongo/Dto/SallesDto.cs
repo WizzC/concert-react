@@ -19,7 +19,7 @@ namespace testMongo.Dto
 
         public bool Smac { get; set; }
 
-        public List<ConcertsDto> Concerts{ get; set; }
+        public List<ConcertsDto>? Concerts{ get; set; }
 }
 
     public class SallesDtoOut
@@ -38,7 +38,7 @@ namespace testMongo.Dto
 
         public bool Smac { get; set; }
 
-        public List<ConcertsDto> Concerts { get; set; }
+        public List<ConcertsDto>? Concerts { get; set; }
 
     }
 }
