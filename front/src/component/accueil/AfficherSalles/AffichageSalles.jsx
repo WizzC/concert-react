@@ -44,7 +44,7 @@ function AffichageSalles({
   return (
     <section>
       <main>
-        {localStorage.getItem("admin") == "true" && <div className={Style.btnAdd}>
+        {localStorage.getItem("admin") == "true" && <div className={Style.salles}>
           <FormCrud />
         </div>}
         {listeSalles.map((salle) => (

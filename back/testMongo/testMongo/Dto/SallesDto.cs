@@ -13,7 +13,7 @@ namespace testMongo.Dto
 
         public List<string> Styles { get; set; }
 
-        public List<AvisDto> Avis { get; set; }
+        public List<AvisDto>? Avis { get; set; }
 
         public int Capacite { get; set; }
 

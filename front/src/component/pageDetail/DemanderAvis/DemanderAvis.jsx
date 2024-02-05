@@ -33,7 +33,7 @@ const Stars = ({ salle ,setSalle}) => {
       body: JSON.stringify(newSalle)
     };
 
-
+    console.log(options)
     fetch('https://localhost:44314/api/Salles/' + newSalle.id, options)
     .then(rep => {
       if(rep.status == 204)

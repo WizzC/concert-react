@@ -43,7 +43,7 @@ public class SallesController : ControllerBase
         return NotFound();
     }
 
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<Salle>> CreateSalle(Salle entity)
     {

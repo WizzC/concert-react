@@ -21,7 +21,7 @@ namespace testMongo.Models
         public List<string> Styles { get; set; }
 
         [BsonElement("avis")]
-        public List<Avis> Avis { get; set; }
+        public List<Avis>? Avis { get; set; }
 
         [BsonElement("capacite")]
         public int Capacite { get; set; }
