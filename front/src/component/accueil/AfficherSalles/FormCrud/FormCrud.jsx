@@ -44,7 +44,7 @@ function FormCrud() {
     e.preventDefault()
     closeModal();
   }
-
+const chemin = "https://localhost:44314/api/Salles"
   function envoyerDonne() {
     const option = {
       method: 'POST',
@@ -55,7 +55,7 @@ function FormCrud() {
       body: JSON.stringify(salle)
     }
     console.log(option)
-    fetch("https://localhost:44314/api/Salles", option)
+    fetch(chemin, option)
       .then(res => {
         if (!res.ok) {
           throw new Error(`Erreur HTTP! Statut: ${res.status}`);

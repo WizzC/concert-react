@@ -47,9 +47,7 @@ public class SallesController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Salle>> CreateSalle(Salle entity)
     {
-        // TODO trouver un moyen de récupérer le token (dans le header de la requête http)
-        // TODO vérifier que l'utilisateur qui a envoyé le token est bien un administrateur
-
+      
         await _SallesService.CreateAsync(entity);
 
         return CreatedAtRoute("GetSalleById", new { id = entity.Id }, entity);
@@ -78,8 +76,6 @@ public class SallesController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        // TODO trouver un moyen de récupérer le token (dans le header de la requête http)
-        // TODO vérifier que l'utilisateur qui a envoyé le token est bien un administrateur
 
         var book = await _SallesService.GetAsync(id);
 

@@ -15,15 +15,12 @@ function Connexion({setIsOpen}) {
         },
         body: JSON.stringify(user)
     };
-
-    fetch("https://localhost:44314/api/User/authenticate", options)
+const chemin = "https://localhost:44314/api/User/authenticate"
+    fetch(chemin , options)
         .then(res => res.json())
         .then(users => {
           localStorage.setItem("tokens",users.token)
           localStorage.setItem("admin",users.admin)
-          console.log(users.admin)
-          // const decodedToken = jwtDecode(users.token);
-          // console.log(decodedToken)
           window.location.reload(false);
 
         });
